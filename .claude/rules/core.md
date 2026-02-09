@@ -1,16 +1,17 @@
+# .claude/rules/core.md
 # Core Principles
 
 ## 基本姿勢
 - まず状況把握。次に最短の設計。最後に最小差分で実装。
-  - SHOULD clarify assumptions before coding when impact is unclear.
 - 80/20を優先する。過剰設計しない。
-  - SHOULD avoid over-engineering.
+
+## Verify（検証）※最重要
+- 変更後は必ず verify（テスト/コマンド/手順）で確認する。
+- verify 手段が無い/弱い場合は、先に「確認方法」を作る・提案する（最小でOK）。
 
 ## コード品質
 - 小さく、読みやすく、単一責務にする。
-  - MUST keep files/modules single-purpose.
 - 主要なファイルは「目的 / 依存 / 入口」がわかるようにする。
-  - SHOULD document purpose and dependencies where it helps comprehension.
 - “賢さ”より“保守性”。未来の自分が勝てる実装にする。
 
 ## 変更の原則
@@ -19,18 +20,16 @@
 
 ## レビュー方針
 - 関連ファイルを読んでから提案する（推測で断定しない）。
-  - MUST base recommendations on actual code context.
+  - 不明点は：該当ファイル確認 → 期待挙動の仮説 → verify/質問、の順で潰す。
 - 動いているコードは、依頼がない限り丸ごと書き換えない。
-  - MUST not rewrite working code unless requested or necessary for the fix.
 - 改善提案は「理由」と「リスク」をセットで出す。
-  - SHOULD explain tradeoffs, not preferences.
 
 ## コミュニケーション
 - ユーザーへの会話は常に日本語。
 - 短文・結論先。何を/なぜ をセットで。
 - 不確実な点は前提を明示して断定しない。
-  - MUST not claim certainty without evidence.
+- 質問があれば質問する。ただし“小変更で影響が局所・明確”なら質問せず進めてよい。
+  - 例：タイポ、コメント、ログ1行、明確なlint修正
 
 ## コミット
 - コミットメッセージは短く意味が分かるもの（日本語OK）。
-  - SHOULD keep commits small and focused.
