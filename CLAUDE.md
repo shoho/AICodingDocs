@@ -1,20 +1,37 @@
-# CLAUDE.md
+## Workflow Orchestration
 
-## Purpose
-Ship clean, understandable, maintainable code — fast.
+### 1. Plan Mode Default
+- Enter plan mode for ANY non-trivial task (3+ steps or architectural decisions)
+- If something goes sideways, STOP and re-plan immediately - don't keep pushing
+- Use plan mode for verification steps, not just building
+- Write detailed specs upfront to reduce ambiguity
 
-## TL;DR（非交渉）
-- シンプルが正義。複雑は悪。
-- 依頼された範囲だけ実装する（勝手に機能追加しない）。
-- 変更は最小差分。既存を壊さない。
-- 先に検証手段を用意する（テスト/コマンド/手順）。無いなら先に作る/提案する。
-- いきなり書かない。まず探索→計画→実装（小変更のみ省略可）。
-- 開発が終わったら、関連するドキュメントが更新されているのかを必ず確認。
-- ユーザーへの返答は常に日本語（短文・結論先）。
+### 2. Subagent Strategy
+- Use subagents liberally to keep main context window clean
+- Offload research, exploration, and parallel analysis to subagents
+- For complex problems, throw more compute at it via subagents
+- One task per subagent for focused execution
 
-## 詳細ルール
-`.claude/rules/` 以下を参照：
-- `core.md` — コード品質・レビュー方針
-- `project.md` — プロジェクト固有の技術スタック・API・DB構造（テンプレート）
-- `ui.md` — UI/UXガイドライン
-- `workflow.md` — 作業フロー・承認が必要な変更
+### 3. Self-Improvement Loop
+- After ANY correction from the user: update `tasks/lessons.md` with the pattern
+- Write rules for yourself that prevent the same mistake
+- Ruthlessly iterate on these lessons until mistake rate drops
+- Review lessons at session start for relevant project
+
+### 4. Verification Before Done
+- Never mark a task complete without proving it works
+- Diff behavior between main and your changes when relevant
+- Ask yourself: "Would a staff engineer approve this?"
+- Run tests, check logs, demonstrate correctness
+
+### 5. Demand Elegance (Balanced)
+- For non-trivial changes: pause and ask "is there a more elegant way?"
+- If a fix feels hacky: "Knowing everything I know now, implement the elegant solution"
+- Skip this for simple, obvious fixes - don't over-engineer
+- Challenge your own work before presenting it
+
+### 6. Autonomous Bug Fixing
+- When given a bug report: just fix it. Don't ask for hand-holding
+- Point at logs, errors, failing tests - then resolve them
+- Zero context switching required from the user
+- Go fix failing CI tests without being told how
