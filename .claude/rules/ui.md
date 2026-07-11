@@ -1,3 +1,9 @@
+---
+paths:
+  - "**/*.{tsx,jsx,vue,svelte}"
+  - "**/*.{css,scss,html}"
+---
+
 # UI Design Principles
 
 1. シンプルにする（要素を増やさない）

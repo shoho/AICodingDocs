@@ -6,6 +6,8 @@
 
 Explore → Plan → Spec → Test → 実装 → 検証 → 報告
 
+リスク分類が Low の軽微な変更(差分を一文で説明できるもの)はフローを省略し、実装 → 検証 → 報告のみでよい。
+
 1. **Explore**: 目的に必要な範囲だけ読む。不明点は仮説として扱う
 2. **Plan**: 変更点の要約 / 影響範囲 / verify方法 / リスク分類を書く
 3. **Spec**: Mini Spec + Acceptance Criteria を書く

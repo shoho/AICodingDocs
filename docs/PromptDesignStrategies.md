@@ -1,5 +1,9 @@
 # Prompt design strategies
 
+> **出典**: Google「[Prompt design strategies](https://ai.google.dev/gemini-api/docs/prompting-strategies)」(Gemini API ドキュメント)の転載。2026年1月取得。原文は [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) ライセンス。
+>
+> **注意**: 本書は **Gemini 専用**のガイドです。一部の推奨(few-shot を常に含める、`You MUST` 調のエージェント指示、temperature 調整など)は、Claude の最新モデル向け公式推奨([Claude prompting best practices](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-4-best-practices))とは方針が異なるため、Claude にはそのまま適用しないこと。
+
 *Prompt design* is the process of creating prompts, or natural language requests, that elicit accurate, high quality responses from a language model.
 
 This page introduces basic concepts, strategies, and best practices to get you started designing prompts to get the most out of Gemini AI models.
