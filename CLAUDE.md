@@ -1,37 +1,28 @@
-## Workflow Orchestration
+# Workflow Guidelines
 
-### 1. Plan Mode Default
-- Enter plan mode for ANY non-trivial task (3+ steps or architectural decisions)
-- If something goes sideways, STOP and re-plan immediately - don't keep pushing
-- Use plan mode for verification steps, not just building
-- Write detailed specs upfront to reduce ambiguity
+開発の進め方は Spec 駆動開発(`.claude/rules/workflow.md`)に従う。
 
-### 2. Subagent Strategy
-- Use subagents liberally to keep main context window clean
-- Offload research, exploration, and parallel analysis to subagents
-- For complex problems, throw more compute at it via subagents
-- One task per subagent for focused execution
+## 計画
 
-### 3. Self-Improvement Loop
-- After ANY correction from the user: update `tasks/lessons.md` with the pattern
-- Write rules for yourself that prevent the same mistake
-- Ruthlessly iterate on these lessons until mistake rate drops
-- Review lessons at session start for relevant project
+- 設計判断を含むタスクや影響範囲が不明なタスクは、実装前に計画を提示して合意を取る
+- 差分を一文で説明できる小さな修正(タイポ、ログ追加など)は計画なしで直接進めてよい
+- 前提が崩れたり手戻りが続いたら、押し切らずに立ち止まって再計画する
 
-### 4. Verification Before Done
-- Never mark a task complete without proving it works
-- Diff behavior between main and your changes when relevant
-- Ask yourself: "Would a staff engineer approve this?"
-- Run tests, check logs, demonstrate correctness
+## サブエージェント
 
-### 5. Demand Elegance (Balanced)
-- For non-trivial changes: pause and ask "is there a more elegant way?"
-- If a fix feels hacky: "Knowing everything I know now, implement the elegant solution"
-- Skip this for simple, obvious fixes - don't over-engineer
-- Challenge your own work before presenting it
+- メインの文脈を圧迫する作業(広範なコードベース探索、独立した調査・レビュー)に限って委譲する
+- 数回の検索や少数ファイルの読み取りで済む作業は直接行う
 
-### 6. Autonomous Bug Fixing
-- When given a bug report: just fix it. Don't ask for hand-holding
-- Point at logs, errors, failing tests - then resolve them
-- Zero context switching required from the user
-- Go fix failing CI tests without being told how
+## 実装
+
+- 依頼された範囲だけを変更する。頼まれていない抽象化・設定項目・ファイルは追加しない
+- 修正がその場しのぎに感じたら、いま分かっていることを前提に素直な設計を再検討してから提示する
+
+## プロンプト作成
+
+- プロンプトやエージェント向け指示を書くときは、対象モデルの公式プロンプトガイド・ベストプラクティスの最新版を調べてから書く。手元の知識や旧世代モデル向けのテクニックを流用しない
+
+## 継続的改善
+
+- 同じ修正指示を2回受けたら、このファイルまたは `.claude/rules/` への追記を提案する
+- ルールは短く具体的に保つ。消しても挙動が悪化しない行は削る
