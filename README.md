@@ -18,8 +18,14 @@ AI コーディング(主に Claude Code)のための設定・ルール・参考
 
 | ファイル | 出典 | 備考 |
 |---|---|---|
-| [PromptDesignStrategies.md](docs/PromptDesignStrategies.md) | Google「[Prompt design strategies](https://ai.google.dev/gemini-api/docs/prompting-strategies)」(CC BY 4.0) | **Gemini 専用**。Claude には [Claude prompting best practices](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-4-best-practices) を参照 |
 | The-Complete-Guide-to-Building-Skill-for-Claude.pdf | Anthropic 公式「The Complete Guide to Building Skills for Claude」 | Skills(SKILL.md)の設計・テスト・配布ガイド |
+
+### プロンプト設計の公式ガイド
+
+外部ドキュメントのコピーは置かず、常に最新の公式ガイドを参照する:
+
+- Claude: [Prompting best practices](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-4-best-practices)
+- Gemini: [Prompt design strategies](https://ai.google.dev/gemini-api/docs/prompting-strategies)
 
 ## メンテナンス方針
 
